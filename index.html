@@ -7,11 +7,117 @@
 /* Getting There: concise, trip-specific travel instructions */
 .transport-intro{border-radius:19px;background:#e8eee9;border:1px solid #d8e4d9;padding:22px;display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center}.transport-intro h3{font:600 24px 'Playfair Display',serif;margin:5px 0}.transport-intro p{font-size:13px;color:#52665c}.transport-control{display:flex;flex-wrap:wrap;gap:9px;align-items:center;justify-content:space-between;margin:18px 0}.travel-date{display:flex;gap:6px;flex-wrap:wrap}.travel-date button{border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:10px 12px;font-weight:700;font-size:12px}.travel-date button.active{background:var(--ink);color:#fff}.route-stack{display:flex;flex-direction:column;gap:13px}.route-card{border:1px solid var(--line);border-radius:18px;background:var(--paper);overflow:hidden}.route-head{padding:17px;display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;text-align:left;color:var(--ink)}.route-symbol{width:44px;height:44px;border-radius:13px;background:#f5e8dd;display:flex;align-items:center;justify-content:center;font-size:23px;flex-shrink:0}.route-heading{flex:1;min-width:0}.route-heading strong{font-size:15px;display:block}.route-heading small{font-size:11px;color:var(--muted);display:block;margin-top:4px}.route-chev{font-size:20px;color:var(--muted)}.route-body{display:none;border-top:1px solid var(--line);padding:18px}.route-card.expanded .route-body{display:block}.route-mode{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:0 0 15px}.route-mode .tag{padding:5px 10px;border-radius:100px;background:#f0f2ef;font-size:11px;font-weight:700}.line-icon{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:50%;background:#00933c;color:#fff;font-size:14px;font-weight:800;flex-shrink:0}.line-icon.l7{background:#b933ad}.line-icon.lL{background:#a7a9ac;color:#111}.line-icon.lF{background:#ff6319}.line-icon.l4,.line-icon.l5,.line-icon.l6{background:#00933c}.line-icon.lN{background:#fccc0a;color:#222}.rail-steps{list-style:none;padding:0;margin:0 0 17px}.rail-steps li{display:grid;grid-template-columns:31px 1fr;gap:11px;position:relative;padding:0 0 18px}.rail-steps li:last-child{padding-bottom:0}.rail-steps li:not(:last-child):before{content:'';position:absolute;top:31px;bottom:0;left:15px;border-left:2px dashed #cfd8d3}.step-number{width:31px;height:31px;border-radius:50%;display:flex;justify-content:center;align-items:center;background:#ebede8;font-weight:800;font-size:12px;z-index:1}.rail-steps strong{display:block;font-size:13px;margin:2px 0 4px}.rail-steps p{font-size:12px;color:#65747a;line-height:1.5}.route-note{font-size:12px;line-height:1.5;background:#fff4dd;color:#795b32;border-radius:11px;padding:11px 13px;margin-bottom:14px}.route-actions{display:flex;flex-wrap:wrap;gap:8px}.route-actions button,.route-actions a{border:1px solid #d4dad8;background:#fff;padding:11px 12px;border-radius:11px;font-size:12px;text-decoration:none;color:var(--ink);font-weight:700}.route-actions .primary{background:var(--ink);border-color:var(--ink);color:#fff}.transport-footer{margin-top:18px;padding:15px;border:1px solid #deded7;border-radius:13px;color:#66747b;font-size:12px;line-height:1.6;background:#fff}.mini-trip{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11px;margin:9px 0}.mini-trip button{background:#e6eeea;border:0;color:#375b50;border-radius:100px;padding:6px 10px;font-weight:700}.mini-trip button:hover{background:#ceded4}.quick-trip-btn{display:inline-flex;margin-top:10px;border:1px solid #d8e1dc;background:#eff5ef;color:#355d4d;border-radius:12px;padding:9px 12px;font-weight:700;font-size:12px}.transport-alert{padding:13px;border-left:4px solid #b78a48;background:#fff5e7;border-radius:10px;font-size:12px;color:#76562d;line-height:1.6;margin:13px 0}.transport-legend{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 18px;font-size:12px;color:#647078}
 @media(max-width:600px){.transport-intro{display:block}.route-head{padding:14px}.route-body{padding:14px}.route-actions button,.route-actions a{flex:1;text-align:center}.travel-date button{padding:9px 10px}}
-</style></head><body><header><div class="brand">new york, <span>trip guide ✦</span></div><div class="topright"><span class="desktop">Tachi + Kaitlyn</span><span class="pill">NOV 04 — 10 · 2026</span></div></header><main class="main">
+
+/* Phone-first usability improvements — November 2026 */
+html{scroll-padding-top:88px}
+button,a,input,textarea,select{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #b46a51;outline-offset:3px}
+img{max-width:100%}
+@media(max-width:700px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body{font-size:15px;-webkit-text-size-adjust:100%}
+  header{height:calc(59px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 15px 0;gap:8px}
+  .brand{font-size:clamp(16px,4.3vw,21px);min-width:0;letter-spacing:-.6px}
+  .topright{flex-shrink:0}.pill{font-size:10px;padding:7px 9px}
+  .main{padding:14px 14px calc(112px + env(safe-area-inset-bottom,0px));width:100%;min-width:0}
+  .hero{height:245px;min-height:0;border-radius:17px}
+  .hero:before{background-image:linear-gradient(90deg,rgba(18,30,40,.86),rgba(18,30,40,.28)),url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80')}
+  .hero-content{padding:20px 21px;max-width:100%}
+  .hero h1{font-size:clamp(35px,10vw,46px);letter-spacing:-1px}
+  .hero p{font-size:13px;line-height:1.5;margin-top:7px}
+  .hero .eyebrow{font-size:9px;letter-spacing:1px}
+  .hero-actions{margin-top:13px;gap:8px}
+  .hero-actions button{min-height:43px;padding:10px 13px;font-size:12px}
+  .summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 13px}
+  .stat{padding:10px 12px;border-radius:12px;min-width:0}
+  .stat strong{font-size:16px;margin-top:3px;overflow-wrap:anywhere}
+  .stat small{font-size:10px}
+  .confirmed-chip{font-size:11px;padding:7px 10px}
+  .nav{position:fixed;bottom:0;left:0;right:0;z-index:75;background:rgba(255,254,250,.97);
+    border-top:1px solid var(--line);box-shadow:0 -6px 26px rgba(30,40,45,.08);
+    padding:8px 7px calc(8px + env(safe-area-inset-bottom,0px));margin:0;
+    display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;overflow:visible;
+    -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+  .nav button{white-space:normal;border:0;border-radius:11px;padding:8px 2px;min-width:0;min-height:56px;
+    display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;
+    font-size:10px;letter-spacing:-.25px;overflow-wrap:anywhere;background:transparent}
+  .nav button.active{background:var(--ink);color:#fff}
+  .section{margin-top:15px;scroll-margin-top:calc(72px + env(safe-area-inset-top,0px))}
+  body[data-current-tab]:not([data-current-tab="itinerary"]) .hero,
+  body[data-current-tab]:not([data-current-tab="itinerary"]) .summary,
+  body[data-current-tab]:not([data-current-tab="itinerary"]) .summary + div{display:none!important}
+  .section-title{margin-bottom:12px}
+  .section-title h2{font-size:26px;line-height:1.18}
+  .section-title p{font-size:13px;line-height:1.5}
+  .days{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;
+    scrollbar-width:none;margin:14px -14px 15px;padding:0 14px 7px}
+  .days::-webkit-scrollbar{display:none}
+  .day-btn{flex:0 0 62px;min-width:62px;min-height:65px;padding:10px 5px;scroll-snap-align:center}
+  .day-btn strong{font-size:21px}.day-btn small{font-size:10px}
+  .dayhero{height:215px;border-radius:15px}
+  .dayhero-content{left:18px;right:15px;bottom:16px}
+  .dayhero h2{font-size:27px;line-height:1.2}
+  .two-col{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:15px}
+  .schedule,.side{min-width:0}
+  .stop{min-height:88px;gap:10px;align-items:center;padding:12px;border-radius:15px}
+  .stop img{width:65px;height:67px;flex-shrink:0}
+  .stop .time{min-width:56px;max-width:61px;font-size:11px;line-height:1.35;overflow-wrap:anywhere}
+  .stop .copy h3{font-size:15px;line-height:1.3}
+  .stop .copy p{font-size:12px;line-height:1.35;white-space:normal;text-overflow:clip;overflow:visible;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .status{font-size:10px;white-space:normal}
+  .panel{padding:16px}
+  .banner{padding:16px;align-items:flex-start}.banner strong{font-size:20px;line-height:1.3}
+  .placegrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .place img{height:123px}.place div{padding:11px}
+  .place h3{font-size:14px;line-height:1.35}
+  .booking-list,.journal-grid{grid-template-columns:1fr}
+  .booking{padding:16px}
+  .booking-top{flex-wrap:wrap}
+  .booking .links{flex-wrap:wrap;gap:12px}
+  .quick-links{grid-template-columns:1fr 1fr}
+  .quick-links a,.footer-actions button,.route-actions a,.route-actions button,
+  .booking select,.btn,.filters button,.travel-date button{min-height:44px}
+  input,textarea,select{font-size:16px!important}
+  .searchbar,.input{font-size:16px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-14px;padding-right:14px}
+  .filters button{white-space:nowrap;flex-shrink:0}
+  .transport-intro{padding:17px}.transport-intro h3{font-size:22px}
+  .transport-control{align-items:stretch}.travel-date{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%;padding-bottom:3px}
+  .travel-date button{flex-shrink:0}
+  .route-head{min-height:75px;padding:13px}
+  .route-heading strong{font-size:15px;line-height:1.3}
+  .route-heading small{font-size:12px;line-height:1.4}
+  .route-body{padding:14px}
+  .rail-steps li{grid-template-columns:33px minmax(0,1fr);gap:12px;padding-bottom:18px}
+  .rail-steps strong{font-size:14px;line-height:1.4}.rail-steps p{font-size:13px;line-height:1.55}
+  .route-actions{display:grid;grid-template-columns:1fr 1fr}
+  .route-actions a,.route-actions button{display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1.3;padding:12px 7px}
+  .route-actions .primary{grid-column:1/-1}
+  .modal-shade{padding:0;align-items:flex-end}
+  .modal{width:100%;max-height:calc(94dvh - env(safe-area-inset-top,0px));border-radius:22px 22px 0 0;
+    padding-bottom:env(safe-area-inset-bottom,0px);overscroll-behavior:contain}
+  .modal-photo{height:190px}.modal-inner{padding:18px 17px 20px}
+  .modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .modal-actions a,.modal-actions button{min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center;padding:11px}
+  .modal-close{width:44px;height:44px;top:12px;right:12px}
+  .toast{bottom:calc(85px + env(safe-area-inset-bottom,0px));width:max-content;max-width:calc(100vw - 30px);text-align:center}
+  .fineprint{line-height:1.55;padding:0 8px}
+}
+@media(max-width:370px){
+  .nav button{font-size:9px;padding:7px 1px}
+  .brand{font-size:16px}.pill{font-size:9px}
+  .stop img{width:54px;height:60px}.stop .time{min-width:48px;max-width:48px}
+  .stop{gap:7px;padding:10px}.stop .copy h3{font-size:13px}
+  .route-actions{grid-template-columns:1fr}
+  .route-actions .primary{grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stop,.place{transition:none}}
+
+</style></head><body data-current-tab="itinerary"><header><div class="brand">new york, <span>trip guide ✦</span></div><div class="topright"><span class="desktop">Tachi + Kaitlyn</span><span class="pill">NOV 04 — 10 · 2026</span></div></header><main class="main">
 <div class="hero"><div class="hero-content"><div class="eyebrow">✦ two friends, one NYC adventure · 2026</div><h1>Hello,<br>New York!</h1><p>Seven days of sightseeing, bookstores, Broadway, great food, and a birthday to celebrate. ✨</p><div class="hero-actions"><button onclick="go('itinerary')">Explore our days ↗</button><button class="secondary" onclick="go('bookings')">Tickets & plans</button></div></div></div>
 <div class="summary"><div class="stat"><small>WHEN</small><strong>Nov 4–10</strong></div><div class="stat"><small>HOTEL</small><strong>The Renwick</strong></div><div class="stat"><small>THE BIG NIGHT</small><strong>Nov 8 🎂</strong></div><div class="stat"><small>OUR ADVENTURE</small><strong>7 days · NYC</strong></div></div>
 <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 22px"><span class="confirmed-chip">✓ Six experiences booked</span><span class="subtle">$943.31 paid/deposited · SUMMIT time to verify · Bustronome reply pending</span></div>
-<div class="nav" role="tablist" aria-label="Trip sections"><button data-tab="itinerary" class="active" onclick="go('itinerary')">🗓 Daily plans</button><button data-tab="transport" onclick="go('transport')">🚇 Getting there</button><button data-tab="explore" onclick="go('explore')">📍 Explore places</button><button data-tab="bookings" onclick="go('bookings')">🎟 Tickets & plans</button><button data-tab="journal" onclick="go('journal')">💌 Our memories</button><button data-tab="essentials" onclick="go('essentials')">🧳 Trip essentials</button></div>
+<div class="nav" role="tablist" aria-label="Trip sections"><button data-tab="itinerary" class="active" aria-selected="true" onclick="go('itinerary')">🗓 Daily plans</button><button data-tab="transport" onclick="go('transport')">🚇 Getting there</button><button data-tab="explore" onclick="go('explore')">📍 Explore places</button><button data-tab="bookings" onclick="go('bookings')">🎟 Tickets & plans</button><button data-tab="journal" onclick="go('journal')">💌 Our memories</button><button data-tab="essentials" onclick="go('essentials')">🧳 Trip essentials</button></div>
 <section class="section active" id="itinerary"><div class="section-title"><div><h2>Our seven days</h2><p>Tap a date, then tap any stop for the details.</p></div></div><div class="days" id="days"></div><div id="day-content"></div></section>
 <section class="section" id="transport"><div class="section-title"><div><h2>Getting there, made easy 🚇</h2><p>Step-by-step routes from one planned stop to the next — without the map clutter.</p></div></div><div class="transport-intro"><div><div class="eyebrow" style="color:#60806c">YOUR POCKET TRANSIT GUIDE</div><h3>Know where to go next.</h3><p>We suggest the simplest practical option: walking for nearby spots, subway for longer hops, and rideshare when luggage or timing makes it worthwhile. Tap any leg for station-by-station directions.</p></div><div style="font-size:43px">🚉</div></div><div class="transport-control"><div class="travel-date" id="transportDays"></div><button class="btn" onclick="openLiveStatus()" style="padding:10px 13px;font-size:12px;background:#46695d">↗ Live MTA status</button></div><div id="routeSummary" class="transport-legend"></div><div id="transportRoutes" class="route-stack"></div><div class="transport-footer"><b>Before every subway ride:</b> read the train letter/number and the direction on the platform, then confirm that the train is stopping at your station. Weekend service and construction can change routes. This guide is a curated plan, <b>not live navigation</b>; use “Check live route” for current alternatives, and MTA status for disruptions. Tap a contactless card or phone at the subway fare gate. Station-specific exit stairways can change; follow signs for the named street.</div></section>
 <section class="section" id="explore"><div class="section-title"><div><h2>NYC places guide</h2><p>All the places on the itinerary, plus some optional stops.</p></div></div><input class="searchbar" id="placeSearch" placeholder="Search places, neighborhoods, activities…" oninput="renderPlaces()"><div class="filters" id="placeFilters"></div><div class="placegrid" id="places"></div></section>
@@ -65,7 +171,7 @@ const bookingCosts={lyric:'$394.44 paid',met:'$60.00 paid',liberty:'$52.60 paid'
 const statusWords={booked:'✓ Purchased / confirmed',verify:'? Time / details to verify',to_book:'! Ticket / reservation needed',booth:'Ticket / pickup at booth',none:'No ticket needed',optional:'Optional / not booked'};
 const stat=(p)=>statuses[p.id]||p.ticket;const badge=p=>`<span class="status ${stat(p)}">${statusWords[stat(p)]}</span>`;
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function go(tab){document.querySelectorAll('.section').forEach(e=>e.classList.toggle('active',e.id===tab));document.querySelectorAll('[data-tab]').forEach(e=>e.classList.toggle('active',e.dataset.tab===tab));if(tab==='explore')renderPlaces();if(tab==='bookings')renderBookings();window.scrollTo({top:385,behavior:'smooth'});}
+function go(tab){document.body.dataset.currentTab=tab;document.querySelectorAll('.section').forEach(e=>e.classList.toggle('active',e.id===tab));document.querySelectorAll('[data-tab]').forEach(e=>{const active=e.dataset.tab===tab;e.classList.toggle('active',active);e.setAttribute('aria-selected',String(active));if(active&&window.matchMedia('(max-width:700px)').matches)e.scrollIntoView({block:'nearest',inline:'nearest'});});if(tab==='explore')renderPlaces();if(tab==='bookings')renderBookings();if(window.matchMedia('(max-width:700px)').matches){window.scrollTo({top:0,behavior:'instant'});}else{window.scrollTo({top:385,behavior:'smooth'});}}
 function chooseDay(i){selected=i;renderDay();}
 function renderDay(){document.getElementById('days').innerHTML=D.map((d,i)=>`<button class="day-btn ${i===selected?'active':''}" onclick="chooseDay(${i})"><small>${d.date}</small><strong>${d.num}</strong></button>`).join('');let d=D[selected];document.getElementById('day-content').innerHTML=`<div class="dayhero"><img src="${im(d.image,1350)}" alt="New York scenery" onerror="this.style.opacity=0"><div class="dayhero-content"><div class="eyebrow">DAY ${selected+1} · NOVEMBER ${Number(d.num)}</div><h2>${d.title}</h2><p>${d.subtitle}</p></div></div><div class="two-col"><div><div class="section-title"><div><h2 style="font-size:24px">The day's adventures</h2><p>All times are NYC local time (EST).</p></div></div><button class="quick-trip-btn" onclick="showTransportForDay(selected)">🚇 Open today’s step-by-step routes →</button><div class="schedule">${d.stops.map(s=>{let p=PLACE.find(x=>x.id===s[2]);return `<button class="stop" onclick="details('${p.id}')"><div class="time">${s[0]}</div><img src="${im(p.image,210)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div class="copy"><h3>${s[1]}</h3><p>${s[3]}</p><div style="margin-top:6px">${badge(p)}</div></div><div class="arrow">↗</div></button>`}).join('')}</div></div><div class="side"><div class="panel"><div class="label">Today's vibe</div><h3>${d.title}</h3><p>${d.focus}</p></div><div class="panel tip"><div class="label">Helpful reminder</div><p>${d.tip}</p></div><div class="panel"><div class="label">Notes for this day</div><textarea class="input" id="daynote" placeholder="Meeting place, confirmation info, restaurant ideas…">${esc(notes[selected]||'')}</textarea><button class="btn secondary" onclick="saveDayNote()">Save day notes</button></div><div class="panel"><div class="label">🚇 Today’s transit plan</div><h3>Every journey, simplified</h3><p>Walking routes, subway platforms, stops and the best ride option for each leg.</p><button class="btn secondary" onclick="showTransportForDay(selected)">View today’s routes →</button></div><div class="panel"><div class="label">Need to find your way?</div><p>Tap an activity to open Google Maps directions directly to it.</p><button class="btn secondary" onclick="openMap('The Renwick Hotel, 118 E 40th St, New York NY')">Directions to our hotel ↗</button></div></div></div>`;}
 function saveDayNote(){notes[selected]=document.getElementById('daynote').value;localStorage.setItem('nyc26_notes',JSON.stringify(notes));toast('Day notes saved')}

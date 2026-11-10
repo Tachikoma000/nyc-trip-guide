@@ -113,8 +113,75 @@ img{max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stop,.place{transition:none}}
 
+
+/* Secret birthday adventure: responsive, accessible, self-contained */
+.birthday-invite{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:linear-gradient(110deg,#fff1e5,#f7e3ed 48%,#e8ecfa);border:1px solid #efdadb;
+  padding:18px 22px;border-radius:20px;margin:15px 0 20px;box-shadow:0 10px 30px rgba(132,80,110,.08)}
+.birthday-invite .intro{min-width:0}.birthday-invite .kicker{font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;font-weight:800;color:#9e536d}
+.birthday-invite h3{font:700 24px 'Playfair Display',Georgia,serif;margin:3px 0 5px;color:#533c57}
+.birthday-invite p{font-size:13px;color:#805d78;line-height:1.5}
+.birthday-launch{border:0;flex-shrink:0;min-height:66px;min-width:225px;border-radius:18px;
+  background:linear-gradient(135deg,#df5e8b,#a856a3);color:#fff;box-shadow:0 10px 24px rgba(167,55,116,.26);
+  padding:16px 23px;font-size:17px;font-weight:800;letter-spacing:.1px;animation:bdayPulse 2.9s ease-in-out infinite}
+.birthday-launch:active{transform:scale(.97)}
+@keyframes bdayPulse{50%{box-shadow:0 12px 32px rgba(167,55,116,.4)}}
+.birthday-overlay{position:fixed;inset:0;z-index:300;display:none;overflow:hidden;background:#10172d;color:white;isolation:isolate}
+.birthday-overlay.open{display:block}
+.birthday-overlay canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.birthday-ui{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;pointer-events:none;padding:26px 22px calc(25px + env(safe-area-inset-bottom,0px))}
+.birthday-top{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));left:18px;right:18px;
+  display:flex;justify-content:space-between;gap:12px;align-items:center;pointer-events:auto}
+.birthday-top span{font-size:12px;letter-spacing:2px;font-weight:800;color:#ffe1e7}
+.birthday-close{border:1px solid rgba(255,255,255,.4);background:rgba(15,18,44,.6);color:#fff;
+  min-width:46px;min-height:46px;border-radius:100px;font-size:25px}
+.birthday-stage{position:absolute;top:calc(72px + env(safe-area-inset-top,0px));left:0;right:0;
+  font-size:clamp(13px,3.5vw,19px);font-weight:700;letter-spacing:.8px;text-shadow:0 2px 14px #050a25;
+  opacity:0;transition:opacity .55s}
+.birthday-stage.show{opacity:1}
+.birthday-message{position:relative;max-width:660px;width:100%;opacity:0;transform:translateY(22px) scale(.97);
+  transition:opacity .8s,transform .8s;text-shadow:0 3px 25px rgba(5,10,35,.55)}
+.birthday-message.show{opacity:1;transform:translateY(0) scale(1)}
+.birthday-message .little{font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase;color:#ffd6e4}
+.birthday-message h2{font:700 clamp(42px,10vw,86px)/1.02 'Playfair Display',Georgia,serif;color:#fff8dd;
+  margin:12px 0 17px;letter-spacing:-1.5px}
+.birthday-message .gratitude{font:600 clamp(17px,4.5vw,25px)/1.4 'DM Sans',sans-serif;color:#fff}
+.birthday-letter{background:rgba(19,22,51,.77);border:1px solid rgba(255,255,255,.23);
+  padding:clamp(18px,4vw,29px);border-radius:21px;max-height:40vh;overflow:auto;
+  margin:19px auto 0;box-shadow:0 15px 50px rgba(5,6,25,.23);backdrop-filter:blur(11px);
+  opacity:0;transform:translateY(15px);transition:opacity .8s,transform .8s;pointer-events:auto}
+.birthday-letter.show{opacity:1;transform:translateY(0)}
+.birthday-letter p{font-size:clamp(14px,3.7vw,18px);line-height:1.65;color:#fff6f2}
+.birthday-letter .signoff{margin-top:13px;color:#ffd5e7;font-weight:800}
+.birthday-controls{position:absolute;bottom:calc(15px + env(safe-area-inset-bottom,0px));left:18px;right:18px;
+  display:flex;justify-content:center;gap:10px;pointer-events:auto}
+.birthday-controls button{min-height:44px;border-radius:25px;border:1px solid rgba(255,255,255,.5);
+  background:rgba(14,20,43,.72);padding:10px 18px;color:white;font-weight:700;font-size:13px}
+@media(max-width:700px){
+ .birthday-invite{flex-direction:column;align-items:stretch;padding:18px;gap:14px}
+ .birthday-invite h3{font-size:23px}.birthday-launch{width:100%;min-width:0;min-height:62px;font-size:18px}
+ .birthday-message{margin-top:28px}
+ .birthday-message h2{font-size:clamp(39px,11vw,59px);margin:8px 0 12px}
+ .birthday-message .gratitude{font-size:17px}
+ .birthday-letter{margin-top:14px;max-height:43dvh}
+ .birthday-letter p{font-size:14px;line-height:1.55}
+ .birthday-controls{bottom:calc(9px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-height:710px){
+ .birthday-message h2{font-size:clamp(34px,9vw,54px)}
+ .birthday-letter{max-height:35dvh;padding:13px}
+ .birthday-stage{top:calc(66px + env(safe-area-inset-top,0px))}
+}
+@media(prefers-reduced-motion:reduce){.birthday-launch{animation:none}.birthday-message,.birthday-letter{transition:none}}
 </style></head><body data-current-tab="itinerary"><header><div class="brand">new york, <span>trip guide ✦</span></div><div class="topright"><span class="desktop">Tachi + Kaitlyn</span><span class="pill">NOV 04 — 10 · 2026</span></div></header><main class="main">
 <div class="hero"><div class="hero-content"><div class="eyebrow">✦ two friends, one NYC adventure · 2026</div><h1>Hello,<br>New York!</h1><p>Seven days of sightseeing, bookstores, Broadway, great food, and a birthday to celebrate. ✨</p><div class="hero-actions"><button onclick="go('itinerary')">Explore our days ↗</button><button class="secondary" onclick="go('bookings')">Tickets & plans</button></div></div></div>
+<div class="birthday-invite" aria-label="A special birthday surprise">
+  <div class="intro"><div class="kicker">✨ A little NYC surprise</div>
+    <h3>Hey, birthday girl! 🎂</h3><p>One last adventure, just for Kaitlyn. Tap when you're ready!</p></div>
+  <button class="birthday-launch" onclick="launchBirthday()" aria-label="Open Kaitlyn's birthday surprise">🎉 Tap for a surprise!</button>
+</div>
 <div class="summary"><div class="stat"><small>WHEN</small><strong>Nov 4–10</strong></div><div class="stat"><small>HOTEL</small><strong>The Renwick</strong></div><div class="stat"><small>THE BIG NIGHT</small><strong>Nov 8 🎂</strong></div><div class="stat"><small>OUR ADVENTURE</small><strong>7 days · NYC</strong></div></div>
 <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 22px"><span class="confirmed-chip">✓ Crown Shy booked · 5 paid attractions</span><span class="subtle">$943.31 paid/deposited · SUMMIT time to verify · Bustronome canceled · refund to confirm</span></div>
 <div class="nav" role="tablist" aria-label="Trip sections"><button data-tab="itinerary" class="active" aria-selected="true" onclick="go('itinerary')">🗓 Daily plans</button><button data-tab="transport" onclick="go('transport')">🚇 Getting there</button><button data-tab="explore" onclick="go('explore')">📍 Explore places</button><button data-tab="bookings" onclick="go('bookings')">🎟 Tickets & plans</button><button data-tab="journal" onclick="go('journal')">💌 Our memories</button><button data-tab="essentials" onclick="go('essentials')">🧳 Trip essentials</button></div>
@@ -125,6 +192,25 @@ img{max-width:100%}
 <section class="section" id="journal"><div class="section-title"><div><h2>NYC Trip Journal</h2><p>Favorite moments, meals, discoveries, and photos from the trip.</p></div></div><div class="banner"><div><strong>Birthday plans · November 8 🎂</strong><p>One whole day for celebrating, exploring SoHo and getting dressed up for dinner.</p></div><span style="font-size:34px">🎂</span></div><div class="journal-grid" id="journal-grid"></div><div class="footer-actions"><button onclick="exportData()">↓ Save our notes & progress</button><button onclick="document.getElementById('importFile').click()">↑ Import saved notes</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importData(event)"></div></section>
 <section class="section" id="essentials"><div class="section-title"><div><h2>The useful stuff</h2><p>Everything handy when we're out and about.</p></div></div><div class="two-col"><div class="side"><div class="panel"><div class="label">Hotel</div><h2>The Renwick</h2><p>118 E 40th St, New York, NY 10016 · Six nights (Nov 4–10). Check-in is typically after 3 PM; earlier access is not guaranteed.</p><div class="footer-actions"><button onclick="openMap('The Renwick Hotel, 118 E 40th St, New York NY')">↗ Directions</button><button onclick="window.open('tel:+12126874875')">☎ Call hotel</button></div></div><div class="panel"><div class="label">Wednesday · Arrivals</div><h3>Two airports, one city</h3><p><b>Tachi:</b> Newark EWR · arrives 11:00 AM.<br><b>Kaitlyn:</b> LaGuardia LGA · arrives 4:30 PM.</p><p style="margin-top:10px">Meet at the Renwick instead of waiting at the airport. Leave the evening flexible for travel delays.</p></div><div class="panel"><div class="label">Tuesday · Departure</div><h3>Return flight details: verify</h3><p>The older spreadsheet lists LGA departures at 11:30 AM for both travelers, but the arrival itinerary changed. Check both current flight confirmations before relying on the return-airport details.</p></div><div class="panel"><div class="label">Trip planning budget</div><h3>$943.31 paid / deposited</h3><p>Five paid attractions: Broadway $394.44, ferry $52.60, Met $60, charm bracelets $108.88, SUMMIT $127.39. Separately, a $200 Bustronome deposit was paid for a canceled dinner (refund pending). Crown Shy was booked instead; its cost is not recorded. Flights, hotel, meals and transit are additional. The old $4,383 spreadsheet plan is not a payment ledger.</p></div></div><div class="side"><div class="panel tip"><div class="label">A few New York tips</div><p>🌇 November sunset is around 4:45 PM.<br><br>🧥 Dress in layers; waterfront wind feels colder.<br><br>🚇 Tap the same card or device for each subway ride to benefit from fare capping where eligible.<br><br>🏙 Keep a little unscheduled time every day.<br><br>🔋 Bring a portable charger and comfortable walking shoes.</p></div><div class="panel"><div class="label">Ticket essentials</div><h3>Keep original tickets handy</h3><p>Harry Potter: Dress Circle F111/F112, Thu Nov 5 7 PM; eTickets sent approximately 48 hours before show.<br><br>Liberty ferry: Fri Nov 6 8:30 AM check-in / 9 AM reservation, Castle Clinton, The Battery.<br><br>Cut and Cropped: Sun Nov 8 11:30 AM, SoHo.<br><br>Crown Shy: Sun Nov 8 birthday dinner confirmed; exact time to verify. Bustronome canceled; request deposit refund.<br><br>SUMMIT: Mon Nov 9 planned; verify actual ticket time.<br><br>Met: Thu Nov 5, 2 adult tickets.</p></div><div class="panel"><div class="label">Open a useful map</div><div class="quick-links"><a href="https://www.google.com/maps/search/?api=1&query=Grand+Central+Terminal" target="_blank" rel="noopener">Grand Central ↗</a><a href="https://www.google.com/maps/search/?api=1&query=The+Battery+NYC" target="_blank" rel="noopener">Ferry departure ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Lyric+Theatre+NYC" target="_blank" rel="noopener">Lyric Theatre ↗</a><a href="https://www.google.com/maps/search/?api=1&query=The+Metropolitan+Museum+of+Art" target="_blank" rel="noopener">The Met ↗</a></div></div><div class="panel"><div class="label">Weather-friendly swaps</div><h3>If it rains…</h3><p>Swap the Brooklyn outdoor afternoon for MoMA, an extended Met visit, bookstore browsing, or a long Chelsea Market lunch. Ferry services are weather-dependent.</p></div></div></div></section>
 <p class="fineprint">Made for a great NYC trip · All times EST · Confirmed purchases shown; unverified details clearly labeled · Photos courtesy Unsplash</p></main>
+<div class="birthday-overlay" id="birthdayOverlay" role="dialog" aria-modal="true" aria-label="A birthday surprise for Kaitlyn" aria-hidden="true">
+ <canvas id="birthdayCanvas" aria-hidden="true"></canvas>
+ <div class="birthday-ui">
+  <div class="birthday-top"><span>✦ NYC · BEST FRIENDS EDITION</span><button class="birthday-close" onclick="closeBirthday()" aria-label="Close birthday surprise">×</button></div>
+  <div class="birthday-stage" id="birthdayStage">A little trip through our favorite NYC moments… ✨</div>
+  <div class="birthday-message" id="birthdayMessage">
+   <div class="little">New York was only the beginning ✨</div>
+   <h2>Happy Birthday,<br>Kaitlyn! 🎂</h2>
+   <div class="gratitude">Thank you for the most amazing vacation in New York.</div>
+   <div class="birthday-letter" id="birthdayLetter">
+    <p>From bagels and bookstores to Broadway, Brooklyn Bridge, and every little adventure in between, I'm so glad we got to experience this city together.</p>
+    <p style="margin-top:11px">I'm truly thankful to have you as my best friend for life. You make even the most ordinary moments memorable, and I can't wait for all the adventures, laughs, and stories we still have ahead of us.</p>
+    <p style="margin-top:11px">And just so you know… I'm <strong>still</strong> keeping an eye on your pigeon spy network. 🐦🕵️‍♀️ They're getting suspiciously organized. 😂</p>
+    <p class="signoff">Here's to many more adventures. Happy birthday! ✨</p>
+   </div>
+  </div>
+  <div class="birthday-controls"><button onclick="launchBirthday()">↻ Replay magic</button><button onclick="closeBirthday()">Back to our trip ✕</button></div>
+ </div>
+</div>
 <div class="modal-shade" id="modalShade" onclick="if(event.target===this)closeModal()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" aria-label="Close details" onclick="closeModal()">×</button><div id="modalContent"></div></div></div><div class="toast" id="toast"></div>
 <script>
 const IMG={sky:'photo-1486325212027-8081e485255e',grand:'photo-1518391846015-55a9cc003b25',park:'photo-1500534623283-312aade485b7',met:'photo-1561214115-f2f134cc4912',harbor:'photo-1485738422979-f5c462d49f74',bridge:'photo-1519501025264-65ba15a82390',soho:'photo-1449824913935-59a10b8d2000',books:'photo-1507842217343-583bb7270b66',night:'photo-1519608487953-e999c86e7455',food:'photo-1517248135467-4c7edcad34c4',coffee:'photo-1501339847302-ac426a4a7cbb',theater:'photo-1503095396549-807759245b35',art:'photo-1531058020387-3be344556be6',hotel:'photo-1566073771259-6a8506099945',shopping:'photo-1483985988355-763728e1935b',birthday:'photo-1511795409834-ef04bbd61622',sunset:'photo-1477959858617-67f85cf4f1df',taxi:'photo-1449965408869-eaa3f722e40d',gallery:'photo-1577083552431-6e5fd01aa342',island:'photo-1522083165195-3424ed129620',color:'photo-1513364776144-60967b0f800f'};
@@ -254,4 +340,155 @@ function showTransportForDay(day,leg=0){travelDay=day;go('transport');renderTran
 
 renderTransport();
 renderDay();renderPlaces();renderJournal();renderBookings();
+
+/* Animated birthday surprise. Drawn live on canvas; no API keys or external libraries. */
+const birthdayScenes=[
+ ['New York skyline','photo-1486325212027-8081e485255e'],
+ ['Grand Central Terminal','photo-1518391846015-55a9cc003b25'],
+ ['Central Park','photo-1500534623283-312aade485b7'],
+ ['The Metropolitan Museum','photo-1561214115-f2f134cc4912'],
+ ['Broadway magic','photo-1503095396549-807759245b35'],
+ ['Liberty Island','photo-1485738422979-f5c462d49f74'],
+ ['Ellis Island','photo-1522083165195-3424ed129620'],
+ ['Brooklyn Bridge','photo-1519501025264-65ba15a82390'],
+ ['SoHo streets','photo-1449824913935-59a10b8d2000'],
+ ['DUMBO & Brooklyn','photo-1519501025264-65ba15a82390'],
+ ['NYC bagels & memories','photo-1517248135467-4c7edcad34c4'],
+ ['The city at night','photo-1519608487953-e999c86e7455'],
+ ['Harry Potter & bookstores','photo-1507842217343-583bb7270b66'],
+ ['City lights','photo-1477959858617-67f85cf4f1df'],
+ ['Birthday adventure','photo-1511795409834-ef04bbd61622']
+];
+let birthdayRAF=0,birthdayStarted=0,birthdayImages=[],birthdayConfetti=[],birthdayMosaic=null,birthdayOldOverflow='',birthdayLastFrame=0;
+const bRand=i=>{let v=Math.sin(i*127.1+42.37)*43758.5453;return v-Math.floor(v)};
+function birthdayStatuePath(c){
+ c.beginPath();
+ // A stylized Statue of Liberty silhouette: torch, raised arm, crown, tablet and pedestal.
+ c.moveTo(64,56);c.lineTo(103,56);c.lineTo(108,112);c.lineTo(94,123);
+ c.lineTo(93,195);c.lineTo(121,206);c.lineTo(143,173);c.lineTo(158,165);
+ c.lineTo(163,123);c.lineTo(145,100);c.lineTo(171,103);
+ c.lineTo(184,77);c.lineTo(199,105);c.lineTo(220,64);c.lineTo(228,109);
+ c.lineTo(251,83);c.lineTo(254,118);c.lineTo(284,105);c.lineTo(272,139);
+ c.lineTo(299,148);c.lineTo(274,164);c.lineTo(267,198);c.lineTo(299,229);
+ c.lineTo(328,287);c.lineTo(354,267);c.lineTo(391,300);c.lineTo(386,405);
+ c.lineTo(348,420);c.lineTo(345,494);c.lineTo(371,562);c.lineTo(143,562);
+ c.lineTo(172,486);c.lineTo(160,406);c.lineTo(133,327);c.lineTo(137,252);
+ c.lineTo(98,232);c.lineTo(81,192);c.lineTo(75,128);c.lineTo(63,111);c.closePath();
+ c.moveTo(141,562);c.lineTo(373,562);c.lineTo(383,596);c.lineTo(130,596);c.closePath();
+ c.moveTo(117,596);c.lineTo(394,596);c.lineTo(404,635);c.lineTo(107,635);c.closePath();
+ // Torch flames.
+ c.moveTo(82,5);c.bezierCurveTo(120,31,102,49,97,55);c.lineTo(69,55);c.bezierCurveTo(57,38,78,30,82,5);c.closePath();
+}
+function birthdayBuildMosaic(){
+ const c=document.createElement('canvas');c.width=500;c.height=650;const x=c.getContext('2d');
+ const cols=5,rows=7,tw=100,th=650/rows;
+ for(let i=0;i<cols*rows;i++){
+  const img=birthdayImages[i%birthdayImages.length];let px=(i%cols)*tw,py=Math.floor(i/cols)*th;
+  if(img&&img.complete&&img.naturalWidth){const scale=Math.max(tw/img.naturalWidth,th/img.naturalHeight);
+   x.drawImage(img,(tw-img.naturalWidth*scale)/2+px,(th-img.naturalHeight*scale)/2+py,img.naturalWidth*scale,img.naturalHeight*scale);}
+  else{x.fillStyle=['#e9a0a5','#bac7cf','#b9a797','#82a6ad','#d1b5ca'][i%5];x.fillRect(px,py,tw,th);}
+  x.strokeStyle='rgba(255,255,255,.22)';x.strokeRect(px,py,tw,th);
+ }
+ x.globalCompositeOperation='destination-in';x.fillStyle='#fff';birthdayStatuePath(x);x.fill();x.globalCompositeOperation='source-over';
+ return c;
+}
+function birthdayFit(img,w,h){
+ const k=Math.max(w/img.naturalWidth,h/img.naturalHeight);return [(w-img.naturalWidth*k)/2,(h-img.naturalHeight*k)/2,img.naturalWidth*k,img.naturalHeight*k];
+}
+function birthdayDrawing(now){
+ const overlay=document.getElementById('birthdayOverlay');if(!overlay.classList.contains('open'))return;
+ const canvas=document.getElementById('birthdayCanvas'),ctx=canvas.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2);
+ const w=window.innerWidth,h=window.innerHeight;
+ if(canvas.width!==Math.floor(w*dpr)||canvas.height!==Math.floor(h*dpr)){canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);}
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+ let t=Math.max(0,(now-birthdayStarted)/1000);
+ ctx.fillStyle='#111931';ctx.fillRect(0,0,w,h);
+ let bg=ctx.createRadialGradient(w*.48,h*.48,10,w*.5,h*.5,Math.max(w,h)*.75);
+ bg.addColorStop(0,'#3c456c');bg.addColorStop(.55,'#242a4f');bg.addColorStop(1,'#0b1028');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+ for(let j=0;j<46;j++){ctx.fillStyle='rgba(255,255,255,'+(.1+bRand(j)*.33)+')';ctx.beginPath();ctx.arc(bRand(j+25)*w,bRand(j+50)*h,1+bRand(j+75)*2,0,Math.PI*2);ctx.fill();}
+ const stage=document.getElementById('birthdayStage'),msg=document.getElementById('birthdayMessage'),letter=document.getElementById('birthdayLetter');
+ stage.classList.toggle('show',t<6.4);
+ stage.textContent=t<2.7?'✨ NYC, one unforgettable adventure…':t<5.8?'🗽 All roads lead to Lady Liberty…':'✨ A little birthday magic…';
+ msg.classList.toggle('show',t>=7.3);letter.classList.toggle('show',t>=8.5);
+ const tileW=Math.min(150,w*.37),tileH=tileW*.75;
+ if(t<3.15){
+  const count=Math.min(birthdayScenes.length,Math.floor(t*6)+2);
+  for(let i=0;i<count;i++){
+   const img=birthdayImages[i],x=w*.5+Math.sin(i*2.4+t*.28)*(w*.38)-tileW/2;
+   const y=h*.46+Math.cos(i*2.75+t*.35)*(h*.30)-tileH/2;
+   const alpha=Math.min(1,(t-i/6)*2.5);
+   ctx.save();ctx.globalAlpha=Math.max(0,Math.min(.95,alpha));ctx.translate(x+tileW/2,y+tileH/2);
+   ctx.rotate(Math.sin(i*4.7)*.19);ctx.fillStyle='rgba(255,255,255,.22)';
+   ctx.fillRect(-tileW/2-3,-tileH/2-3,tileW+6,tileH+28);
+   if(img&&img.complete&&img.naturalWidth){const r=birthdayFit(img,tileW,tileH);ctx.drawImage(img,r[0]-tileW/2,r[1]-tileH/2,r[2],r[3]);}
+   ctx.fillStyle='#242034';ctx.fillRect(-tileW/2,tileH/2,tileW,22);
+   ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='600 10px DM Sans, sans-serif';
+   ctx.fillText(birthdayScenes[i][0].slice(0,24),0,tileH/2+15);ctx.restore();
+  }
+ }
+ if(t>=2.3&&t<7.3){
+  const mw=Math.min(w*.82,h*.57,410),mh=mw*1.3,mx=(w-mw)/2,my=(h-mh)/2-18;
+  if(t<5.7){
+   ctx.save();ctx.globalAlpha=Math.min(1,(t-2.3)/1.1);
+   ctx.shadowColor='#fbcad7';ctx.shadowBlur=30;
+   if(birthdayMosaic)ctx.drawImage(birthdayMosaic,mx,my,mw,mh);
+   ctx.restore();
+   ctx.fillStyle='#fff5ec';ctx.font='700 16px DM Sans, sans-serif';ctx.textAlign='center';
+   if(t>3.65)ctx.fillText('New York, together ✨',w/2,Math.min(h-98,my+mh+27));
+  }else{
+   const progress=Math.min(1,(t-5.7)/1.45),ease=progress*progress*(3-2*progress);
+   if(birthdayMosaic){
+    const cols=9,rows=12,sw=500/cols,sh=650/rows;
+    for(let i=0;i<cols*rows;i++){
+     const a=i%cols,b=Math.floor(i/cols),cx=mx+(a+.5)*mw/cols,cy=my+(b+.5)*mh/rows;
+     const vx=(bRand(i*7)-.5)*w*1.7,vy=(bRand(i*7+1)-.5)*h*1.6;
+     ctx.save();ctx.globalAlpha=1-ease;
+     ctx.translate(cx+vx*ease,cy+vy*ease);ctx.rotate((bRand(i*7+2)-.5)*ease*6);
+     ctx.drawImage(birthdayMosaic,a*sw,b*sh,sw+1,sh+1,-mw/cols/2,-mh/rows/2,mw/cols+1,mh/rows+1);ctx.restore();
+    }
+   }
+  }
+ }
+ if(t>=5.7){
+  for(let i=0;i<birthdayConfetti.length;i++){
+   const p=birthdayConfetti[i],age=t-5.7,xx=((p.x*w+p.vx*age*55)% (w+40)+w+40)%(w+40)-20;
+   const yy=((p.y*h+age*(p.speed*45)+Math.sin(t*2+p.phase)*18)%(h+30)+h+30)%(h+30)-15;
+   ctx.save();ctx.translate(xx,yy);ctx.rotate(t*p.spin+p.phase);ctx.fillStyle=p.color;
+   ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*.58);ctx.restore();
+  }
+ }
+ if(t<10.2){birthdayRAF=requestAnimationFrame(birthdayDrawing);}
+ else{birthdayRAF=0;birthdayLastFrame=now;}
+}
+function birthdayLoadImages(){
+ birthdayImages=birthdayScenes.map((p,i)=>{const img=new Image();img.crossOrigin='anonymous';
+ img.src='https://images.unsplash.com/'+p[1]+'?auto=format&fit=crop&w=360&q=70';
+ img.onload=()=>{birthdayMosaic=birthdayBuildMosaic()};return img;});
+}
+function launchBirthday(){
+ const overlay=document.getElementById('birthdayOverlay');
+ cancelAnimationFrame(birthdayRAF);
+ if(!birthdayImages.length)birthdayLoadImages();
+ birthdayMosaic=birthdayBuildMosaic();
+ birthdayConfetti=Array.from({length:160},(_,i)=>({x:bRand(i*8),y:bRand(i*8+1),vx:(bRand(i*8+2)-.5)*1.4,
+  speed:.4+bRand(i*8+3)*1.9,phase:bRand(i*8+4)*7,spin:(bRand(i*8+5)-.5)*7,
+  size:3+bRand(i*8+6)*6,color:['#f5d7a1','#e88bac','#a3d2e3','#c7c5ff','#fff2ec'][i%5]}));
+ birthdayOldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+ overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
+ document.getElementById('birthdayMessage').classList.remove('show');
+ document.getElementById('birthdayLetter').classList.remove('show');
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  birthdayStarted=performance.now()-9000;
+ }else birthdayStarted=performance.now();
+ birthdayRAF=requestAnimationFrame(birthdayDrawing);
+ overlay.querySelector('.birthday-close').focus();
+}
+function closeBirthday(){
+ cancelAnimationFrame(birthdayRAF);birthdayRAF=0;
+ const o=document.getElementById('birthdayOverlay');o.classList.remove('open');o.setAttribute('aria-hidden','true');
+ document.body.style.overflow=birthdayOldOverflow;
+ document.querySelector('.birthday-launch')?.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('birthdayOverlay')?.classList.contains('open'))closeBirthday()});
+
 </script></body></html>

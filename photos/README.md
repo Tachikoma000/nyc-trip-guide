@@ -1,36 +1,45 @@
 # Personal NYC birthday montage photos
 
-The birthday animation in the root `index.html` is ready to display the real trip images from this folder.
+The personalized birthday montage in the root `index.html` loads the 20 JPEG files in this folder.
 
-## How to finish the upload
+## Prepared photo assets
 
-1. On GitHub, open this `photos` directory, then click **Add file → Upload files**.
-2. Upload the **20 selected original JPEG files**, retaining their filenames below.
-3. Commit directly to `main`. GitHub Pages will deploy automatically.
+These are web-sized JPEG copies (up to 1600 pixels on the long side), converted from the supplied HEIC/JPG photos. Orientation is baked into the images and EXIF/location metadata is removed. The original files were left unchanged.
 
-Expected filenames, in playback order:
+The founder approved matching alternatives for two absent selections:
+
+- `IMG_6351.jpeg` uses `IMG_6352.HEIC` (Chrysler Building portrait).
+- `IMG_6188.jpeg` uses `IMG_6190.HEIC` (laughing birthday dinner toast).
+
+`IMG_6042.jpeg` came from the original chat attachment; the other 19 source images came from the supplied Downloads/new-york-images folder.
+
+## Playback order
 
 - IMG_5958.jpeg — Times Square laughs
-- IMG_5979.jpeg — Central Park adventures
-- IMG_6042.jpeg — Harry Potter on Broadway
-- IMG_6119.jpeg — Hufflepuff banner
-- IMG_6107.jpeg — Brooklyn selfie
-- IMG_6101.jpeg — DUMBO photos
-- IMG_6076.jpeg — Brooklyn Bridge
-- IMG_6144.jpeg — Colorful NYC wall
-- IMG_6149.jpeg — Happy Birthday graffiti
-- IMG_6139.jpeg — Pancakes
-- IMG_6386.jpeg — Harry Potter letter
-- IMG_6376.jpeg — Book arch
-- IMG_6308.jpeg — SUMMIT friends selfie
-- IMG_6363.jpeg — SUMMIT skyline
-- IMG_6351.jpeg — Chrysler Building view
-- IMG_6341.jpeg — SUMMIT mirrored balloons
-- IMG_6399.jpeg — Dinner together
-- IMG_6188.jpeg — Birthday dinner laugh
-- IMG_6174.jpeg — Birthday toast
-- IMG_6256.jpeg — Birthday dessert
+- IMG_5979.jpeg — Subway smiles
+- IMG_6042.jpeg — One of our NYC nights
+- IMG_6119.jpeg — The Hufflepuff moment
+- IMG_6107.jpeg — Brooklyn together
+- IMG_6101.jpeg — DUMBO in autumn
+- IMG_6076.jpeg — Walking the Brooklyn Bridge
+- IMG_6144.jpeg — A colorful NYC moment
+- IMG_6149.jpeg — A birthday wish on the wall
+- IMG_6139.jpeg — Our NYC pancake stop
+- IMG_6386.jpeg — A little bookstore magic
+- IMG_6376.jpeg — Under the book arch
+- IMG_6308.jpeg — SUMMIT — best friends on top
+- IMG_6363.jpeg — New York at golden hour
+- IMG_6351.jpeg — Chrysler Building views
+- IMG_6341.jpeg — City views worth celebrating
+- IMG_6399.jpeg — Dinner memories
+- IMG_6188.jpeg — Birthday laughs at Crown Shy
+- IMG_6174.jpeg — Birthday smiles
+- IMG_6256.jpeg — One last birthday dessert
 
-**Important privacy notice:** GitHub Pages and this repository are public. By uploading these files, you'll make the personal photos publicly accessible. Only upload photos that both travelers are comfortable sharing publicly.
+## Updating and deployment
 
-If a file is missing, the animation uses one of its existing public NYC landmark images as a fallback. The trip guide does not store ticket QR codes or private booking details.
+Upload replacement JPEGs with exactly the filenames above. GitHub Actions publishes changes to `main`. Upload and validate assets before changing the animation.
+
+This repository and GitHub Pages site are public. The personal photos are publicly accessible. Do not upload ticket QR codes, booking references, or payment details.
+
+If an image fails to load, the montage uses a public NYC landmark image as its fallback.

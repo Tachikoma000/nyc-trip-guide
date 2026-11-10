@@ -343,26 +343,21 @@ renderDay();renderPlaces();renderJournal();renderBookings();
 
 /* Animated birthday surprise. Drawn live on canvas; no API keys or external libraries. */
 const birthdayScenes=[
- ['Times Square laughs','IMG_5958.jpeg','photo-1519608487953-e999c86e7455'],
- ['Central Park adventures','IMG_5979.jpeg','photo-1500534623283-312aade485b7'],
- ['Harry Potter on Broadway','IMG_6042.jpeg','photo-1503095396549-807759245b35'],
- ['The Hufflepuff moment','IMG_6119.jpeg','photo-1507842217343-583bb7270b66'],
- ['Brooklyn together','IMG_6107.jpeg','photo-1519501025264-65ba15a82390'],
- ['DUMBO in autumn','IMG_6101.jpeg','photo-1519501025264-65ba15a82390'],
- ['Walking the Brooklyn Bridge','IMG_6076.jpeg','photo-1519501025264-65ba15a82390'],
- ['A colorful NYC moment','IMG_6144.jpeg','photo-1449824913935-59a10b8d2000'],
- ['A birthday wish on the wall','IMG_6149.jpeg','photo-1511795409834-ef04bbd61622'],
- ['Our NYC pancake stop','IMG_6139.jpeg','photo-1517248135467-4c7edcad34c4'],
- ['The magic letter','IMG_6386.jpeg','photo-1507842217343-583bb7270b66'],
- ['Under the book arch','IMG_6376.jpeg','photo-1507842217343-583bb7270b66'],
- ['SUMMIT — best friends on top','IMG_6308.jpeg','photo-1477959858617-67f85cf4f1df'],
- ['New York at golden hour','IMG_6363.jpeg','photo-1477959858617-67f85cf4f1df'],
- ['Chrysler Building views','IMG_6351.jpeg','photo-1477959858617-67f85cf4f1df'],
- ['A sky full of silver balloons','IMG_6341.jpeg','photo-1477959858617-67f85cf4f1df'],
- ['Dinner memories','IMG_6399.jpeg','photo-1517248135467-4c7edcad34c4'],
- ['Birthday laughs at Crown Shy','IMG_6188.jpeg','photo-1511795409834-ef04bbd61622'],
- ['A birthday toast','IMG_6174.jpeg','photo-1511795409834-ef04bbd61622'],
- ['One last birthday dessert','IMG_6256.jpeg','photo-1511795409834-ef04bbd61622']
+ ['New York skyline','photo-1486325212027-8081e485255e'],
+ ['Grand Central Terminal','photo-1518391846015-55a9cc003b25'],
+ ['Central Park','photo-1500534623283-312aade485b7'],
+ ['The Metropolitan Museum','photo-1561214115-f2f134cc4912'],
+ ['Broadway magic','photo-1503095396549-807759245b35'],
+ ['Liberty Island','photo-1485738422979-f5c462d49f74'],
+ ['Ellis Island','photo-1522083165195-3424ed129620'],
+ ['Brooklyn Bridge','photo-1519501025264-65ba15a82390'],
+ ['SoHo streets','photo-1449824913935-59a10b8d2000'],
+ ['DUMBO & Brooklyn','photo-1519501025264-65ba15a82390'],
+ ['NYC bagels & memories','photo-1517248135467-4c7edcad34c4'],
+ ['The city at night','photo-1519608487953-e999c86e7455'],
+ ['Harry Potter & bookstores','photo-1507842217343-583bb7270b66'],
+ ['City lights','photo-1477959858617-67f85cf4f1df'],
+ ['Birthday adventure','photo-1511795409834-ef04bbd61622']
 ];
 let birthdayRAF=0,birthdayStarted=0,birthdayImages=[],birthdayConfetti=[],birthdayMosaic=null,birthdayOldOverflow='',birthdayLastFrame=0;
 const bRand=i=>{let v=Math.sin(i*127.1+42.37)*43758.5453;return v-Math.floor(v)};
@@ -402,83 +397,73 @@ function birthdayFit(img,w,h){
 }
 function birthdayDrawing(now){
  const overlay=document.getElementById('birthdayOverlay');if(!overlay.classList.contains('open'))return;
- const canvas=document.getElementById('birthdayCanvas'),ctx=canvas.getContext('2d'),dpr=Math.min(window.devicePixelRatio||1,2);
+ const canvas=document.getElementById('birthdayCanvas'),ctx=canvas.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2);
  const w=window.innerWidth,h=window.innerHeight;
  if(canvas.width!==Math.floor(w*dpr)||canvas.height!==Math.floor(h*dpr)){canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);}
  ctx.setTransform(dpr,0,0,dpr,0,0);
- const t=Math.max(0,(now-birthdayStarted)/1000),n=birthdayScenes.length;
- ctx.fillStyle='#10172d';ctx.fillRect(0,0,w,h);
- const bg=ctx.createRadialGradient(w*.5,h*.4,5,w*.5,h*.5,Math.max(w,h)*.75);
- bg.addColorStop(0,'#41466d');bg.addColorStop(1,'#10172d');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+ let t=Math.max(0,(now-birthdayStarted)/1000);
+ ctx.fillStyle='#111931';ctx.fillRect(0,0,w,h);
+ let bg=ctx.createRadialGradient(w*.48,h*.48,10,w*.5,h*.5,Math.max(w,h)*.75);
+ bg.addColorStop(0,'#3c456c');bg.addColorStop(.55,'#242a4f');bg.addColorStop(1,'#0b1028');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+ for(let j=0;j<46;j++){ctx.fillStyle='rgba(255,255,255,'+(.1+bRand(j)*.33)+')';ctx.beginPath();ctx.arc(bRand(j+25)*w,bRand(j+50)*h,1+bRand(j+75)*2,0,Math.PI*2);ctx.fill();}
  const stage=document.getElementById('birthdayStage'),msg=document.getElementById('birthdayMessage'),letter=document.getElementById('birthdayLetter');
- msg.classList.toggle('show',t>=19);letter.classList.toggle('show',t>=20);
- const photoEnd=13.0,statueStart=12.6,statueStable=16.9,scatterEnd=18.7;
- stage.classList.toggle('show',t<18);
- if(t<photoEnd){
-  const index=Math.min(n-1,Math.floor(t/(photoEnd/n))),image=birthdayImages[index];
-  stage.textContent='✦ '+birthdayScenes[index][0]+' ✦';
-  if(image?.complete&&image.naturalWidth){
-   const f=birthdayFit(image,w,h);ctx.save();ctx.globalAlpha=.32;ctx.drawImage(image,...f);ctx.restore();
+ stage.classList.toggle('show',t<6.4);
+ stage.textContent=t<2.7?'✨ NYC, one unforgettable adventure…':t<5.8?'🗽 All roads lead to Lady Liberty…':'✨ A little birthday magic…';
+ msg.classList.toggle('show',t>=7.3);letter.classList.toggle('show',t>=8.5);
+ const tileW=Math.min(150,w*.37),tileH=tileW*.75;
+ if(t<3.15){
+  const count=Math.min(birthdayScenes.length,Math.floor(t*6)+2);
+  for(let i=0;i<count;i++){
+   const img=birthdayImages[i],x=w*.5+Math.sin(i*2.4+t*.28)*(w*.38)-tileW/2;
+   const y=h*.46+Math.cos(i*2.75+t*.35)*(h*.30)-tileH/2;
+   const alpha=Math.min(1,(t-i/6)*2.5);
+   ctx.save();ctx.globalAlpha=Math.max(0,Math.min(.95,alpha));ctx.translate(x+tileW/2,y+tileH/2);
+   ctx.rotate(Math.sin(i*4.7)*.19);ctx.fillStyle='rgba(255,255,255,.22)';
+   ctx.fillRect(-tileW/2-3,-tileH/2-3,tileW+6,tileH+28);
+   if(img&&img.complete&&img.naturalWidth){const r=birthdayFit(img,tileW,tileH);ctx.drawImage(img,r[0]-tileW/2,r[1]-tileH/2,r[2],r[3]);}
+   ctx.fillStyle='#242034';ctx.fillRect(-tileW/2,tileH/2,tileW,22);
+   ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='600 10px DM Sans, sans-serif';
+   ctx.fillText(birthdayScenes[i][0].slice(0,24),0,tileH/2+15);ctx.restore();
   }
-  ctx.fillStyle='rgba(7,12,34,.45)';ctx.fillRect(0,0,w,h);
-  const ph=Math.min(h*.64,480),pw=Math.min(w*.76,ph*.79);
-  const cx=w/2,cy=h*.49;
-  const mix=t/(photoEnd/n)-index;
-  const pulse=Math.sin(Math.min(1,mix)*Math.PI),rot=.035*Math.sin(index*3.2);
-  ctx.save();ctx.translate(cx,cy);ctx.rotate(rot);ctx.scale(.93+.07*pulse,.93+.07*pulse);
-  ctx.shadowColor='rgba(0,0,0,.5)';ctx.shadowBlur=30;ctx.fillStyle='#fffaf3';
-  ctx.fillRect(-pw/2-7,-ph/2-7,pw+14,ph+33);ctx.shadowBlur=0;
-  if(image?.complete&&image.naturalWidth){
-   const f=birthdayFit(image,pw,ph);ctx.save();ctx.beginPath();ctx.rect(-pw/2,-ph/2,pw,ph);ctx.clip();
-   ctx.drawImage(image,f[0]-pw/2,f[1]-ph/2,f[2],f[3]);ctx.restore();
-  }else{ctx.fillStyle='#627b88';ctx.fillRect(-pw/2,-ph/2,pw,ph);}
-  ctx.fillStyle='#554657';ctx.font='700 12px DM Sans, sans-serif';ctx.textAlign='center';
-  ctx.fillText(birthdayScenes[index][0],0,ph/2+19);ctx.restore();
-  // Little light flecks keep the same whimsical feel as the original animation.
-  for(let i=0;i<28;i++){const x=bRand(i*31)*w,y=bRand(i*31+8)*h;ctx.fillStyle='rgba(255,230,194,'+(.18+bRand(i+60)*.4)+')';
-   ctx.beginPath();ctx.arc(x+Math.sin(t+i)*5,y+Math.cos(t+i)*5,1+bRand(i*5)*2,0,Math.PI*2);ctx.fill();}
  }
- if(t>=statueStart && t<scatterEnd){
-  stage.textContent=t<17?'🗽 Every New York moment makes a memory…':'✨ Birthday magic incoming…';
-  const mw=Math.min(w*.84,h*.57,410),mh=mw*1.3,mx=(w-mw)/2,my=(h-mh)/2-20;
-  if(!birthdayMosaic)birthdayMosaic=birthdayBuildMosaic();
-  if(t<statueStable){
-   ctx.save();ctx.globalAlpha=Math.min(1,(t-statueStart)/1.2);
-   ctx.shadowColor='#ffd3e0';ctx.shadowBlur=28;
-   ctx.drawImage(birthdayMosaic,mx,my,mw,mh);ctx.restore();
-   if(t>15){ctx.fillStyle='#fff1da';ctx.font='700 16px DM Sans,sans-serif';ctx.textAlign='center';
-     ctx.fillText('New York, together ✨',w/2,Math.min(h-92,my+mh+30));}
+ if(t>=2.3&&t<7.3){
+  const mw=Math.min(w*.82,h*.57,410),mh=mw*1.3,mx=(w-mw)/2,my=(h-mh)/2-18;
+  if(t<5.7){
+   ctx.save();ctx.globalAlpha=Math.min(1,(t-2.3)/1.1);
+   ctx.shadowColor='#fbcad7';ctx.shadowBlur=30;
+   if(birthdayMosaic)ctx.drawImage(birthdayMosaic,mx,my,mw,mh);
+   ctx.restore();
+   ctx.fillStyle='#fff5ec';ctx.font='700 16px DM Sans, sans-serif';ctx.textAlign='center';
+   if(t>3.65)ctx.fillText('New York, together ✨',w/2,Math.min(h-98,my+mh+27));
   }else{
-   const p=Math.min(1,(t-statueStable)/(scatterEnd-statueStable)),ease=p*p*(3-2*p),cols=9,rows=12,sw=500/cols,sh=650/rows;
-   for(let i=0;i<cols*rows;i++){
-    const a=i%cols,b=Math.floor(i/cols),cx=mx+(a+.5)*mw/cols,cy=my+(b+.5)*mh/rows;
-    const vx=(bRand(i*7)-.5)*w*1.7,vy=(bRand(i*7+1)-.5)*h*1.5;
-    ctx.save();ctx.globalAlpha=1-ease;ctx.translate(cx+vx*ease,cy+vy*ease);
-    ctx.rotate((bRand(i*7+2)-.5)*ease*6);
-    ctx.drawImage(birthdayMosaic,a*sw,b*sh,sw+1,sh+1,-mw/cols/2,-mh/rows/2,mw/cols+1,mh/rows+1);ctx.restore();
+   const progress=Math.min(1,(t-5.7)/1.45),ease=progress*progress*(3-2*progress);
+   if(birthdayMosaic){
+    const cols=9,rows=12,sw=500/cols,sh=650/rows;
+    for(let i=0;i<cols*rows;i++){
+     const a=i%cols,b=Math.floor(i/cols),cx=mx+(a+.5)*mw/cols,cy=my+(b+.5)*mh/rows;
+     const vx=(bRand(i*7)-.5)*w*1.7,vy=(bRand(i*7+1)-.5)*h*1.6;
+     ctx.save();ctx.globalAlpha=1-ease;
+     ctx.translate(cx+vx*ease,cy+vy*ease);ctx.rotate((bRand(i*7+2)-.5)*ease*6);
+     ctx.drawImage(birthdayMosaic,a*sw,b*sh,sw+1,sh+1,-mw/cols/2,-mh/rows/2,mw/cols+1,mh/rows+1);ctx.restore();
+    }
    }
   }
  }
- if(t>=17.1){
+ if(t>=5.7){
   for(let i=0;i<birthdayConfetti.length;i++){
-   const p=birthdayConfetti[i],age=t-17.1;
-   const xx=((p.x*w+p.vx*age*55)%(w+40)+w+40)%(w+40)-20;
+   const p=birthdayConfetti[i],age=t-5.7,xx=((p.x*w+p.vx*age*55)% (w+40)+w+40)%(w+40)-20;
    const yy=((p.y*h+age*(p.speed*45)+Math.sin(t*2+p.phase)*18)%(h+30)+h+30)%(h+30)-15;
    ctx.save();ctx.translate(xx,yy);ctx.rotate(t*p.spin+p.phase);ctx.fillStyle=p.color;
    ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*.58);ctx.restore();
   }
  }
- if(t<23.5){birthdayRAF=requestAnimationFrame(birthdayDrawing);}
- else birthdayRAF=0;
+ if(t<10.2){birthdayRAF=requestAnimationFrame(birthdayDrawing);}
+ else{birthdayRAF=0;birthdayLastFrame=now;}
 }
 function birthdayLoadImages(){
- birthdayImages=birthdayScenes.map((p,i)=>{
-  const img=new Image();img.crossOrigin='anonymous';
-  img.onload=()=>{birthdayMosaic=birthdayBuildMosaic()};
-  img.onerror=()=>{if(img.dataset.fallback)return;img.dataset.fallback='1';
-   img.src='https://images.unsplash.com/'+p[2]+'?auto=format&fit=crop&w=460&q=75';};
-  img.src='photos/'+p[1];return img;
- });
+ birthdayImages=birthdayScenes.map((p,i)=>{const img=new Image();img.crossOrigin='anonymous';
+ img.src='https://images.unsplash.com/'+p[1]+'?auto=format&fit=crop&w=360&q=70';
+ img.onload=()=>{birthdayMosaic=birthdayBuildMosaic()};return img;});
 }
 function launchBirthday(){
  const overlay=document.getElementById('birthdayOverlay');
@@ -493,7 +478,7 @@ function launchBirthday(){
  document.getElementById('birthdayMessage').classList.remove('show');
  document.getElementById('birthdayLetter').classList.remove('show');
  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  birthdayStarted=performance.now()-21500;
+  birthdayStarted=performance.now()-9000;
  }else birthdayStarted=performance.now();
  birthdayRAF=requestAnimationFrame(birthdayDrawing);
  overlay.querySelector('.birthday-close').focus();
